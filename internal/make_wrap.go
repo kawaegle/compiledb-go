@@ -10,6 +10,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+var makePath = "make"
+
 func MakeWrap(args []string) {
 	var wg sync.WaitGroup
 
@@ -17,7 +19,7 @@ func MakeWrap(args []string) {
 	go func() {
 		// append log
 		args = append([]string{"-Bnkw"}, args...)
-		cmd := exec.Command("make", args...)
+		cmd := exec.Command(makePath, args...)
 
 		var stdoutBuf bytes.Buffer
 		cmd.Stdout = &stdoutBuf
@@ -43,7 +45,7 @@ func MakeWrap(args []string) {
 	}()
 
 	if ParseConfig.NoBuild == false {
-		cmd := exec.Command("make", args...)
+		cmd := exec.Command(makePath, args...)
 		// cmd.Stdout = os.Stdout
 		// cmd.Stderr = os.Stderr
 		stdout, err := cmd.StdoutPipe()
