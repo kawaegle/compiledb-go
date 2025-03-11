@@ -31,8 +31,8 @@ var (
 	nestedCmdRegex = regexp.MustCompile("`([^`]+)`")
 
 	// Leverage `make --print-directory` option
-	makeEnterDir = regexp.MustCompile("^\\s?make.*?: Entering directory .*['`\"](.*)['`\"]$")
-	makeLeaveDir = regexp.MustCompile(`^\s?make.*?: Leaving directory .*'(.*)'$`)
+	makeEnterDir = regexp.MustCompile("^.*-?make.*?: Entering directory .*['`\"](.*)['`\"]$")
+	makeLeaveDir = regexp.MustCompile(`^.*-?make.*?: Leaving directory .*'(.*)'$`)
 
 	// parse make -C xxx
 	makeCmdDir = regexp.MustCompile(`^\s*make.*?-C\s+(.*?)(\s|$)`)
