@@ -72,8 +72,8 @@ jobs:
 
           echo "Build windows-amd64 version"
           GOOS=windows GOARCH=amd64 go build
-          7z a compiledb.7z compiledb.exe
-          mv compiledb.7z $out/compiledb-windows-amd64.7z
+          7z a compiledb.zip compiledb.exe
+          mv compiledb.zip $out/compiledb-windows-amd64.zip
 
           echo "Build darwin-arm64 version"
           GOOS=darwin GOARCH=arm64 go build
