@@ -197,7 +197,9 @@ func Parse(buildLog []string) {
 			if group != nil && len(group) >= 2 {
 				enterDir := group[1]
 				dirStack = append([]string{ConvertPath(enterDir)}, dirStack...)
-				workingDir = dirStack[0]
+				if dirStack[0] != "." {
+					workingDir = dirStack[0]
+				}
 				log.Infof("make cmd change workingDir: %s", workingDir)
 			}
 		}
