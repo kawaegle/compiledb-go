@@ -198,7 +198,7 @@ func Parse(buildLog []string) {
 				enterDir := group[1]
 				dirStack = append([]string{ConvertPath(enterDir)}, dirStack...)
 				workingDir, err = filepath.Abs(dirStack[0])
-				if (err != nil) {
+				if err != nil {
 					log.Error("the folder " + dirStack[0] + "doesn't exist here")
 					continue
 				}
